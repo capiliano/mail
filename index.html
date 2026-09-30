@@ -1,28 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Correo</title>
 
 <style>
-
-/* =====================================================
-   GENERAL
-===================================================== */
-
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
-    font-family:-apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Arial,
-                sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
 body{
@@ -31,15 +20,14 @@ body{
     overflow:hidden;
 }
 
-
-/* =====================================================
+/* =========================
    LOGIN
-===================================================== */
+========================= */
 
 #login{
     position:fixed;
     inset:0;
-    background:#f6f7fb;
+    background:#f5f7fb;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -50,7 +38,7 @@ body{
 .login-box{
     width:100%;
     max-width:380px;
-    background:white;
+    background:#fff;
     padding:32px 26px;
     border-radius:15px;
     box-shadow:0 8px 35px rgba(0,0,0,.12);
@@ -60,7 +48,7 @@ body{
     font-size:31px;
     font-weight:600;
     color:#1a73e8;
-    margin-bottom:6px;
+    margin-bottom:5px;
 }
 
 .login-subtitle{
@@ -115,20 +103,18 @@ body{
     color:#888;
 }
 
-
-/* =====================================================
+/* =========================
    APP
-===================================================== */
+========================= */
 
 #app{
     display:none;
     height:100vh;
 }
 
-
-/* =====================================================
+/* =========================
    BARRA SUPERIOR
-===================================================== */
+========================= */
 
 .top{
     height:68px;
@@ -140,12 +126,9 @@ body{
     background:#fff;
 }
 
-
-/* BOTÓN MENÚ */
-
 .menu{
-    width:40px;
-    height:40px;
+    width:42px;
+    height:42px;
     border:none;
     background:none;
     font-size:25px;
@@ -154,73 +137,45 @@ body{
     z-index:5;
 }
 
-
-/* =====================================================
-   LOGO CENTRADO
-===================================================== */
-
 .logo-center{
     position:absolute;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
     width:210px;
     height:48px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    z-index:2;
 }
 
 .logo-center img{
     width:100%;
     height:100%;
-
     object-fit:contain;
-
-    display:block;
 }
-
-
-/* BOTÓN REDACTAR */
 
 .compose-top{
     width:43px;
     height:43px;
-
     border:none;
     border-radius:7px;
-
     background:#e94335;
     color:white;
-
     font-size:24px;
-
     cursor:pointer;
-
     margin-left:auto;
-
-    z-index:5;
 }
 
-
-/* =====================================================
+/* =========================
    BUSCADOR
-===================================================== */
+========================= */
 
 .search{
     height:62px;
-
     border-bottom:1px solid #ddd;
-
     display:flex;
     align-items:center;
-
     padding:0 18px;
 }
 
@@ -232,12 +187,9 @@ body{
 
 .search input{
     width:100%;
-
     border:none;
     outline:none;
-
     font-size:21px;
-
     color:#222;
 }
 
@@ -245,41 +197,25 @@ body{
     color:#aaa;
 }
 
-
-/* =====================================================
+/* =========================
    BANDEJA
-===================================================== */
+========================= */
 
 .inbox{
     height:calc(100vh - 130px);
-
     overflow-y:auto;
-
     background:#fff;
 }
 
 .email{
-    min-height:102px;
-
+    min-height:104px;
     border-bottom:1px solid #e2e2e2;
-
     padding:12px 15px;
-
     cursor:pointer;
 
     display:grid;
-
-    grid-template-columns:
-        25px
-        1fr
-        auto;
-
-    grid-template-rows:
-        auto
-        auto
-        auto;
-
-    column-gap:9px;
+    grid-template-columns:25px 1fr auto;
+    column-gap:10px;
 }
 
 .email:hover{
@@ -287,11 +223,9 @@ body{
 }
 
 .email-check{
-    width:21px;
-    height:21px;
-
+    width:20px;
+    height:20px;
     grid-row:1 / 4;
-
     margin-top:17px;
 }
 
@@ -299,209 +233,236 @@ body{
     min-width:0;
 }
 
-.sender{
-    font-size:18px;
+.sender-row{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    min-width:0;
+}
+
+.avatar{
+    width:34px;
+    height:34px;
+    min-width:34px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#777,#b9b9b9);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
     font-weight:600;
+}
 
+.sender-info{
+    min-width:0;
+}
+
+.sender{
+    font-size:17px;
+    font-weight:600;
     line-height:1.15;
+}
 
-    margin-bottom:4px;
+.recipient{
+    color:#777;
+    font-size:12px;
+    margin-top:2px;
 }
 
 .subject{
-    font-size:16px;
-
+    font-size:15px;
     line-height:1.25;
-
     white-space:nowrap;
-
     overflow:hidden;
-
     text-overflow:ellipsis;
+    margin-top:7px;
 }
 
 .preview{
     color:#888;
-
-    font-size:14px;
-
+    font-size:13px;
     line-height:1.25;
-
     margin-top:3px;
-
     white-space:nowrap;
-
     overflow:hidden;
-
     text-overflow:ellipsis;
 }
 
 .date{
-    font-size:13px;
-
+    font-size:12px;
     color:#1769d2;
-
     white-space:nowrap;
-
     padding-top:2px;
-
     text-align:right;
 }
 
 .star{
-    font-size:25px;
-
+    font-size:24px;
     color:#ccc;
-
-    grid-column:3;
-
     text-align:right;
-
-    align-self:end;
-
+    margin-top:26px;
     cursor:pointer;
-
-    line-height:23px;
 }
 
 .star.active{
     color:#f5b400;
 }
 
-
-/* =====================================================
-   MENSAJE ABIERTO
-===================================================== */
+/* =========================
+   MENSAJE
+========================= */
 
 #message{
     display:none;
-
     position:absolute;
-
     top:130px;
     left:0;
     right:0;
     bottom:0;
-
     background:white;
-
     overflow-y:auto;
-
     z-index:20;
 }
 
 .message-top{
     height:57px;
-
     border-bottom:1px solid #ddd;
-
     display:flex;
-
     align-items:center;
-
     padding:0 17px;
+    position:sticky;
+    top:0;
+    background:#fff;
+    z-index:2;
 }
 
 .back{
     border:none;
     background:none;
-
     font-size:28px;
-
     color:#555;
-
     cursor:pointer;
-
     margin-right:16px;
 }
 
 .message-title{
     font-size:19px;
-
     font-weight:500;
-
     white-space:nowrap;
-
     overflow:hidden;
-
     text-overflow:ellipsis;
 }
 
 .message-content{
-    padding:25px 24px;
-    max-width:850px;
+    padding:25px 24px 45px;
+    max-width:900px;
+}
+
+.message-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:6px;
+}
+
+.message-avatar{
+    width:43px;
+    height:43px;
+    min-width:43px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#777,#aaa);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+    font-weight:600;
 }
 
 .message-sender{
-    font-size:19px;
-
+    font-size:18px;
     font-weight:600;
-
-    margin-bottom:5px;
 }
 
 .message-address{
     color:#777;
-
     font-size:13px;
-
     line-height:1.5;
-
-    margin-bottom:27px;
+    margin-left:55px;
+    margin-bottom:28px;
 }
 
 .message-body{
     font-size:16px;
-
     line-height:1.7;
-
     white-space:pre-line;
+}
+
+.message-body a{
+    color:#1769d2;
+    text-decoration:underline;
+    word-break:break-all;
 }
 
 .message-date{
     color:#777;
-
     font-size:12px;
-
-    margin-top:10px;
+    margin-top:18px;
+    padding-bottom:25px;
+    border-bottom:1px solid #eee;
 }
 
+/* =========================
+   RESPONDER / REENVIAR
+========================= */
 
-/* =====================================================
+.message-actions{
+    display:flex;
+    gap:12px;
+    margin-top:24px;
+}
+
+.action-box{
+    border:1px solid #d4d4d4;
+    border-radius:7px;
+    background:white;
+    padding:12px 23px;
+    min-width:145px;
+    text-align:center;
+    font-size:14px;
+    cursor:pointer;
+    color:#333;
+}
+
+.action-box:hover{
+    background:#f5f5f5;
+}
+
+/* =========================
    MENÚ LATERAL
-===================================================== */
+========================= */
 
 #sideMenu{
     display:none;
-
     position:fixed;
-
     top:0;
     bottom:0;
     left:0;
-
-    width:280px;
-
+    width:300px;
     background:white;
-
     z-index:4000;
-
     box-shadow:5px 0 25px rgba(0,0,0,.20);
+    overflow-y:auto;
 }
 
 .side-title{
     height:68px;
-
     border-bottom:1px solid #ddd;
-
     display:flex;
-
     align-items:center;
-
     padding:0 17px;
-
     font-size:21px;
-
     color:#555;
 }
 
@@ -509,31 +470,55 @@ body{
     margin-right:8px;
 }
 
+.side-account{
+    padding:18px 20px;
+    border-bottom:1px solid #ddd;
+    background:#fafafa;
+}
+
+.account-avatar{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#666,#aaa);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:600;
+    font-size:18px;
+    margin-bottom:9px;
+}
+
+.account-name{
+    font-size:15px;
+    font-weight:600;
+}
+
+.account-email{
+    color:#777;
+    font-size:12px;
+    margin-top:2px;
+}
+
 .side-section{
-    padding:14px 20px 7px;
-
-    color:#999;
-
-    font-size:11px;
-
+    padding:15px 20px 7px;
+    color:#777;
+    font-size:12px;
+    font-weight:600;
     text-transform:uppercase;
-
-    letter-spacing:.5px;
+    letter-spacing:.4px;
+    background:#f4f4f4;
 }
 
 .side-item{
-    padding:14px 23px;
-
+    min-height:49px;
+    padding:13px 23px;
     font-size:15px;
-
     cursor:pointer;
-
     border-bottom:1px solid #f0f0f0;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 }
 
@@ -541,56 +526,54 @@ body{
     background:#f5f5f5;
 }
 
+.side-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.side-icon{
+    width:24px;
+    text-align:center;
+    font-size:19px;
+    color:#666;
+}
+
 .side-number{
     color:#888;
     font-size:12px;
+    font-weight:500;
 }
 
-
-/* =====================================================
+/* =========================
    REDACTAR
-===================================================== */
+========================= */
 
 #compose{
     display:none;
-
     position:fixed;
-
     right:22px;
     bottom:0;
-
     width:450px;
-
     background:white;
-
     border-radius:9px 9px 0 0;
-
     box-shadow:0 0 30px rgba(0,0,0,.25);
-
     z-index:5000;
 }
 
 .compose-header{
     height:46px;
-
     background:#f1f3f4;
-
     padding:0 14px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 }
 
 .compose-header button{
     border:none;
-
     background:none;
-
     font-size:21px;
-
     cursor:pointer;
 }
 
@@ -600,54 +583,36 @@ body{
 
 .compose-body input{
     width:100%;
-
     height:40px;
-
     border:none;
-
     border-bottom:1px solid #ddd;
-
     outline:none;
-
     font-size:13px;
 }
 
 .compose-body textarea{
     width:100%;
-
     height:205px;
-
     border:none;
-
     resize:none;
-
     outline:none;
-
     padding-top:13px;
-
     font-size:14px;
 }
 
 .send{
     border:none;
-
     background:#1a73e8;
-
     color:white;
-
     padding:9px 21px;
-
     border-radius:20px;
-
     cursor:pointer;
-
     font-size:13px;
 }
 
-
-/* =====================================================
+/* =========================
    RESPONSIVE
-===================================================== */
+========================= */
 
 @media(max-width:600px){
 
@@ -661,12 +626,6 @@ body{
         height:43px;
     }
 
-    .compose-top{
-        width:41px;
-        height:41px;
-        font-size:23px;
-    }
-
     .search{
         height:62px;
         padding:0 15px;
@@ -677,37 +636,36 @@ body{
     }
 
     .email{
-        min-height:101px;
-        padding:11px 11px;
+        min-height:103px;
+        padding:11px;
     }
 
     .sender{
-        font-size:17px;
+        font-size:16px;
     }
 
     .subject{
-        font-size:15px;
+        font-size:14px;
     }
 
     .preview{
-        font-size:13px;
-    }
-
-    .date{
         font-size:12px;
     }
 
-    .star{
-        font-size:23px;
+    .date{
+        font-size:11px;
+    }
+
+    #sideMenu{
+        width:86%;
+        max-width:320px;
     }
 
     #compose{
         width:100%;
         height:100%;
-
         right:0;
         bottom:0;
-
         border-radius:0;
     }
 
@@ -716,7 +674,7 @@ body{
     }
 
     .message-content{
-        padding:21px 17px;
+        padding:21px 17px 40px;
     }
 
     .message-title{
@@ -727,27 +685,26 @@ body{
         font-size:15px;
     }
 
+    .action-box{
+        flex:1;
+        min-width:0;
+        padding:11px 10px;
+    }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
+<!-- =========================
      LOGIN
-===================================================== -->
+========================= -->
 
 <div id="login">
 
     <div class="login-box">
 
-        <div class="login-logo">
-            Correo
-        </div>
+        <div class="login-logo">Correo</div>
 
         <div class="login-subtitle">
             Servicio de correo electrónico
@@ -755,22 +712,18 @@ body{
 
         <h1>Iniciar sesión</h1>
 
-        <p>
-            Accede a tu bandeja de entrada
-        </p>
+        <p>Accede a tu bandeja de entrada</p>
 
         <input
             id="loginEmail"
             type="text"
             placeholder="Correo electrónico"
-            value="emiliano.ch.mino@gmail.com"
-        >
+            value="emiliano.ch.mino@gmail.com">
 
         <input
             id="loginPassword"
             type="password"
-            placeholder="Contraseña"
-        >
+            placeholder="Contraseña">
 
         <button
             class="login-button"
@@ -788,15 +741,11 @@ body{
 </div>
 
 
-
-<!-- =====================================================
-     APLICACIÓN
-===================================================== -->
+<!-- =========================
+     APP
+========================= -->
 
 <div id="app">
-
-
-    <!-- BARRA SUPERIOR -->
 
     <div class="top">
 
@@ -806,17 +755,9 @@ body{
             ☰
         </button>
 
-
-        <!-- TU LOGO -->
-
         <div class="logo-center">
-
-            <img
-                src="logo.png"
-                alt="Logo">
-
+            <img src="logo.png" alt="Logo">
         </div>
-
 
         <button
             class="compose-top"
@@ -827,14 +768,9 @@ body{
     </div>
 
 
-
-    <!-- BUSCADOR -->
-
     <div class="search">
 
-        <div class="search-icon">
-            ⌕
-        </div>
+        <div class="search-icon">⌕</div>
 
         <input
             id="search"
@@ -845,19 +781,15 @@ body{
     </div>
 
 
-
-    <!-- BANDEJA -->
-
     <div
         class="inbox"
         id="inbox">
     </div>
 
 
-
-    <!-- =================================================
-         MENSAJE
-    ================================================= -->
+    <!-- =========================
+         MENSAJE ABIERTO
+    ========================= -->
 
     <div id="message">
 
@@ -876,12 +808,25 @@ body{
 
         </div>
 
-
         <div class="message-content">
 
-            <div
-                class="message-sender"
-                id="messageSender">
+            <div class="message-header">
+
+                <div
+                    class="message-avatar"
+                    id="messageAvatar">
+                    EC
+                </div>
+
+                <div>
+
+                    <div
+                        class="message-sender"
+                        id="messageSender">
+                    </div>
+
+                </div>
+
             </div>
 
             <div
@@ -899,6 +844,23 @@ body{
                 id="messageDate">
             </div>
 
+
+            <div class="message-actions">
+
+                <button
+                    class="action-box"
+                    onclick="replyEmail()">
+                    ↩ Responder
+                </button>
+
+                <button
+                    class="action-box"
+                    onclick="forwardEmail()">
+                    ↪ Reenviar
+                </button>
+
+            </div>
+
         </div>
 
     </div>
@@ -906,10 +868,9 @@ body{
 </div>
 
 
-
-<!-- =====================================================
+<!-- =========================
      MENÚ LATERAL
-===================================================== -->
+========================= -->
 
 <div id="sideMenu">
 
@@ -926,8 +887,25 @@ body{
     </div>
 
 
+    <div class="side-account">
+
+        <div class="account-avatar">
+            EC
+        </div>
+
+        <div class="account-name">
+            Emiliano Chuva
+        </div>
+
+        <div class="account-email">
+            emiliano.ch.mino@gmail.com
+        </div>
+
+    </div>
+
+
     <div class="side-section">
-        Carpetas
+        Recibidos
     </div>
 
 
@@ -935,9 +913,10 @@ body{
         class="side-item"
         onclick="showFolder('inbox')">
 
-        <span>
-            Principal
-        </span>
+        <div class="side-left">
+            <span class="side-icon">▣</span>
+            <span>Principal</span>
+        </div>
 
         <span
             class="side-number"
@@ -949,16 +928,57 @@ body{
 
     <div
         class="side-item"
+        onclick="showFolder('social')">
+
+        <div class="side-left">
+            <span class="side-icon">♟</span>
+            <span>Social</span>
+        </div>
+
+    </div>
+
+
+    <div
+        class="side-item"
+        onclick="showFolder('promotions')">
+
+        <div class="side-left">
+            <span class="side-icon">◇</span>
+            <span>Promociones</span>
+        </div>
+
+        <span class="side-number">12</span>
+
+    </div>
+
+
+    <div
+        class="side-item"
+        onclick="showFolder('notifications')">
+
+        <div class="side-left">
+            <span class="side-icon">●</span>
+            <span>Notificaciones</span>
+        </div>
+
+        <span class="side-number">19</span>
+
+    </div>
+
+
+    <div class="side-section">
+        Etiquetas
+    </div>
+
+
+    <div
+        class="side-item"
         onclick="showFolder('starred')">
 
-        <span>
-            Destacados
-        </span>
-
-        <span
-            class="side-number">
-            ★
-        </span>
+        <div class="side-left">
+            <span class="side-icon">★</span>
+            <span>Destacados</span>
+        </div>
 
     </div>
 
@@ -967,9 +987,10 @@ body{
         class="side-item"
         onclick="showFolder('sent')">
 
-        <span>
-            Enviados
-        </span>
+        <div class="side-left">
+            <span class="side-icon">➤</span>
+            <span>Enviados</span>
+        </div>
 
         <span
             class="side-number"
@@ -983,24 +1004,52 @@ body{
         class="side-item"
         onclick="showFolder('drafts')">
 
-        <span>
-            Borradores
-        </span>
+        <div class="side-left">
+            <span class="side-icon">▱</span>
+            <span>Borradores</span>
+        </div>
 
-        <span>
-            2
-        </span>
+        <span class="side-number">6</span>
 
     </div>
 
 
-    <div
-        class="side-item"
-        onclick="showFolder('trash')">
+    <div class="side-item">
 
-        <span>
-            Papelera
-        </span>
+        <div class="side-left">
+            <span class="side-icon">◯</span>
+            <span>Capilano</span>
+        </div>
+
+    </div>
+
+
+    <div class="side-item">
+
+        <div class="side-left">
+            <span class="side-icon">□</span>
+            <span>Notes</span>
+        </div>
+
+    </div>
+
+
+    <div class="side-item">
+
+        <div class="side-left">
+            <span class="side-icon">○</span>
+            <span>Unroll.me</span>
+        </div>
+
+    </div>
+
+
+    <div class="side-item">
+
+        <div class="side-left">
+            <span class="side-icon">○</span>
+            <span>Unwanted</span>
+        </div>
 
     </div>
 
@@ -1010,49 +1059,71 @@ body{
     </div>
 
 
-    <div class="side-item">
-        <span>
-            Importante
-        </span>
+    <div
+        class="side-item"
+        onclick="showFolder('important')">
+
+        <div class="side-left">
+            <span class="side-icon">●</span>
+            <span>Importantes</span>
+        </div>
+
+        <span class="side-number">34</span>
+
     </div>
 
 
-    <div class="side-item">
-        <span>
-            Todos los correos
-        </span>
+    <div
+        class="side-item"
+        onclick="showFolder('all')">
+
+        <div class="side-left">
+            <span class="side-icon">□</span>
+            <span>Todos</span>
+        </div>
+
     </div>
 
 
-    <div class="side-item">
-        <span>
-            Spam
-        </span>
+    <div
+        class="side-item"
+        onclick="showFolder('spam')">
+
+        <div class="side-left">
+            <span class="side-icon">!</span>
+            <span>Spam</span>
+        </div>
+
+    </div>
+
+
+    <div
+        class="side-item"
+        onclick="showFolder('trash')">
+
+        <div class="side-left">
+            <span class="side-icon">⌫</span>
+            <span>Papelera</span>
+        </div>
+
     </div>
 
 </div>
 
 
-
-<!-- =====================================================
+<!-- =========================
      REDACTAR
-===================================================== -->
+========================= -->
 
 <div id="compose">
 
     <div class="compose-header">
 
-        <strong>
-            Nuevo correo
-        </strong>
+        <strong>Nuevo correo</strong>
 
-        <button
-            onclick="closeCompose()">
-            ×
-        </button>
+        <button onclick="closeCompose()">×</button>
 
     </div>
-
 
     <div class="compose-body">
 
@@ -1066,15 +1137,12 @@ body{
 
         <textarea
             id="body"
-            placeholder="Escribe un mensaje">
-        </textarea>
+            placeholder="Escribe un mensaje"></textarea>
 
         <button
             class="send"
             onclick="sendEmail()">
-
             Enviar
-
         </button>
 
     </div>
@@ -1082,24 +1150,21 @@ body{
 </div>
 
 
-
 <script>
 
 /* =====================================================
-   DATOS DE CORREOS
+   CORREOS
 ===================================================== */
 
 let emails = [
 
-/* -----------------------------------------------------
+/* =====================================================
    ENVIADO MÁS RECIENTE
------------------------------------------------------ */
+===================================================== */
 
 {
     id:100,
-
     sender:"Emiliano Chuva",
-
     subject:"Entrega de Deberes: Dictado y Video",
 
     preview:
@@ -1120,22 +1185,18 @@ Soy Emiliano Chuva, estudiante de la carrera de diseño multimedia. le envió la
 https://canva.link/7xrzj49wlcy09z0`,
 
     unread:false,
-
     star:true,
-
     folder:"sent"
 },
 
 
-/* -----------------------------------------------------
+/* =====================================================
    ENVIADOS ANTIGUOS
------------------------------------------------------ */
+===================================================== */
 
 {
     id:99,
-
     sender:"Emiliano Chuva",
-
     subject:"Consulta sobre actividad académica",
 
     preview:
@@ -1151,9 +1212,12 @@ https://canva.link/7xrzj49wlcy09z0`,
     body:
 `Buenas tardes.
 
-Quisiera realizar una consulta relacionada con la actividad académica y las indicaciones correspondientes.
+Quisiera consultar sobre la actividad académica y las indicaciones correspondientes.
 
-Muchas gracias.`,
+Muchas gracias.
+
+Saludos,
+Emiliano Chuva`,
 
     unread:false,
     star:false,
@@ -1162,9 +1226,7 @@ Muchas gracias.`,
 
 {
     id:98,
-
     sender:"Emiliano Chuva",
-
     subject:"Entrega de trabajo",
 
     preview:
@@ -1192,9 +1254,7 @@ Emiliano Chuva`,
 
 {
     id:97,
-
     sender:"Emiliano Chuva",
-
     subject:"Consulta sobre calificación",
 
     preview:
@@ -1221,9 +1281,7 @@ Gracias por su atención.`,
 
 {
     id:96,
-
     sender:"Emiliano Chuva",
-
     subject:"Material para revisión",
 
     preview:
@@ -1241,35 +1299,191 @@ Gracias por su atención.`,
 
 Le envío el material correspondiente a la actividad para su revisión.
 
-Saludos.`,
+Saludos,
+Emiliano Chuva`,
 
     unread:false,
     star:false,
     folder:"sent"
 },
 
+{
+    id:95,
+    sender:"Emiliano Chuva",
+    subject:"Entrega de actividad",
 
-/* -----------------------------------------------------
-   BANDEJA
------------------------------------------------------ */
+    preview:
+    "Adjunto la actividad correspondiente a esta semana...",
+
+    date:"10 sept, 17:42",
+
+    fullDate:
+    "Jueves 10 de septiembre de 2026, 17:42",
+
+    address:"docente@universidad.edu.ec",
+
+    body:
+`Buenas tardes.
+
+Adjunto la actividad correspondiente a esta semana para su revisión.
+
+Saludos cordiales,
+Emiliano Chuva`,
+
+    unread:false,
+    star:false,
+    folder:"sent"
+},
+
+{
+    id:94,
+    sender:"Emiliano Chuva",
+    subject:"Consulta sobre instrucciones",
+
+    preview:
+    "Quisiera consultar una duda sobre las instrucciones...",
+
+    date:"5 sept, 11:26",
+
+    fullDate:
+    "Sábado 5 de septiembre de 2026, 11:26",
+
+    address:"profesores@universidad.edu.ec",
+
+    body:
+`Buenos días.
+
+Quisiera consultar una duda relacionada con las instrucciones de la actividad.
+
+Muchas gracias.`,
+
+    unread:false,
+    star:false,
+    folder:"sent"
+},
+
+{
+    id:93,
+    sender:"Emiliano Chuva",
+    subject:"Envío de material",
+
+    preview:
+    "Le envío el material solicitado para la actividad...",
+
+    date:"30 ago, 21:05",
+
+    fullDate:
+    "Domingo 30 de agosto de 2026, 21:05",
+
+    address:"docencia@universidad.edu.ec",
+
+    body:
+`Buenas noches.
+
+Le envío el material solicitado para la actividad.
+
+Saludos,
+Emiliano Chuva`,
+
+    unread:false,
+    star:false,
+    folder:"sent"
+},
+
+{
+    id:92,
+    sender:"Emiliano Chuva",
+    subject:"Trabajo para revisión",
+
+    preview:
+    "Adjunto el trabajo para su revisión y comentarios...",
+
+    date:"24 ago, 18:37",
+
+    fullDate:
+    "Lunes 24 de agosto de 2026, 18:37",
+
+    address:"profesora@universidad.edu.ec",
+
+    body:
+`Buenas tardes.
+
+Adjunto el trabajo para su revisión.
+
+Saludos cordiales,
+Emiliano Chuva`,
+
+    unread:false,
+    star:false,
+    folder:"sent"
+},
+
+{
+    id:91,
+    sender:"Emiliano Chuva",
+    subject:"Consulta académica",
+
+    preview:
+    "Buenas tardes, tengo una consulta relacionada con la materia...",
+
+    date:"18 ago, 15:16",
+
+    fullDate:
+    "Martes 18 de agosto de 2026, 15:16",
+
+    address:"docente@universidad.edu.ec",
+
+    body:
+`Buenas tardes.
+
+Tengo una consulta relacionada con la materia y una de las actividades.
+
+Quedo atento a su respuesta.`,
+
+    unread:false,
+    star:false,
+    folder:"sent"
+},
+
+{
+    id:90,
+    sender:"Emiliano Chuva",
+    subject:"Entrega de proyecto",
+
+    preview:
+    "Le envío el proyecto correspondiente a la materia...",
+
+    date:"11 ago, 20:18",
+
+    fullDate:
+    "Martes 11 de agosto de 2026, 20:18",
+
+    address:"profesores@universidad.edu.ec",
+
+    body:
+`Buenas noches.
+
+Le envío el proyecto correspondiente a la materia.
+
+Gracias por su tiempo.`,
+
+    unread:false,
+    star:false,
+    folder:"sent"
+},
+
+/* =====================================================
+   RECIBIDOS
+===================================================== */
 
 {
     id:1,
-
     sender:"Adobe Lightroom",
-
     subject:"Tus fotos están listas para editar",
-
-    preview:
-    "Descubre nuevas herramientas para mejorar tus fotografías...",
-
+    preview:"Descubre nuevas herramientas para mejorar tus fotografías...",
     date:"7:51",
-
-    fullDate:
-    "Martes 29 de septiembre de 2026, 07:51",
-
+    fullDate:"Martes 29 de septiembre de 2026, 07:51",
     address:"newsletter@adobe.example",
-
     body:
 `Hola Emiliano,
 
@@ -1278,519 +1492,304 @@ Tenemos nuevas herramientas disponibles para mejorar y organizar tus fotografía
 Descubre las novedades de esta semana y conoce nuevas formas de trabajar con tus imágenes.
 
 Equipo de Adobe`,
-
     unread:true,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:2,
-
     sender:"Cloudflare",
-
     subject:"Welcome to Birthday Week 2026!",
-
-    preview:
-    "Hottest product launches y novedades especiales...",
-
+    preview:"Nuevos productos y novedades especiales...",
     date:"Ayer",
-
-    fullDate:
-    "Lunes 28 de septiembre de 2026",
-
+    fullDate:"Lunes 28 de septiembre de 2026",
     address:"updates@cloudflare.example",
-
     body:
 `Hola Emiliano,
 
 Bienvenido a Birthday Week 2026.
 
-Tenemos nuevas novedades y anuncios preparados durante esta semana.
-
-Gracias por formar parte de nuestra comunidad.`,
-
+Tenemos nuevas novedades y anuncios preparados durante esta semana.`,
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:3,
-
     sender:"Google",
-
     subject:"Emiliano, termina de configurar tu cuenta",
-
-    preview:
-    "Termina la configuración de tu cuenta de Google...",
-
+    preview:"Termina la configuración de tu cuenta de Google...",
     date:"Ayer",
-
-    fullDate:
-    "Lunes 28 de septiembre de 2026",
-
+    fullDate:"Lunes 28 de septiembre de 2026",
     address:"accounts@google.example",
-
     body:
 `Hola Emiliano,
 
 Tu configuración todavía no está completa.
 
 Puedes revisar los pasos pendientes desde la configuración de tu cuenta.`,
-
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:4,
-
     sender:"Google",
-
     subject:"Has compartido algunos datos de tu cuenta",
-
-    preview:
-    "Haz un seguimiento de los datos de tu cuenta...",
-
+    preview:"Haz un seguimiento de los datos de tu cuenta...",
     date:"27 sept",
-
-    fullDate:
-    "Domingo 27 de septiembre de 2026",
-
+    fullDate:"Domingo 27 de septiembre de 2026",
     address:"accounts@google.example",
-
     body:
 `Hola Emiliano,
 
 Te mostramos información relacionada con la actividad de tu cuenta.
 
-Puedes revisar los detalles y las opciones disponibles desde la configuración.`,
-
+Puedes revisar los detalles desde la configuración.`,
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:5,
-
     sender:"YouTube",
-
     subject:"Descubre nuevos canales y videos",
-
-    preview:
-    "Tenemos recomendaciones seleccionadas para ti...",
-
+    preview:"Tenemos recomendaciones seleccionadas para ti...",
     date:"26 sept",
-
-    fullDate:
-    "Sábado 26 de septiembre de 2026",
-
+    fullDate:"Sábado 26 de septiembre de 2026",
     address:"news@youtube.example",
-
     body:
 `Hola Emiliano,
 
 Tenemos nuevas recomendaciones de canales y videos que podrían interesarte.
 
 Explora contenido nuevo y descubre creadores esta semana.`,
-
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:6,
-
     sender:"Canva",
-
     subject:"Nuevas plantillas para tus proyectos",
-
-    preview:
-    "Hemos seleccionado algunas ideas para tus próximos diseños...",
-
+    preview:"Ideas para tus próximos diseños...",
     date:"24 sept",
-
-    fullDate:
-    "Jueves 24 de septiembre de 2026",
-
+    fullDate:"Jueves 24 de septiembre de 2026",
     address:"design@canva.example",
-
     body:
 `Hola Emiliano,
 
 Descubre nuevas plantillas y recursos para tus proyectos de diseño.
 
 Esperamos que encuentres algo que te inspire.`,
-
     unread:false,
     star:true,
     folder:"inbox"
 },
 
-
 {
     id:7,
-
     sender:"Spotify",
-
     subject:"Nuevas recomendaciones para ti",
-
-    preview:
-    "Descubre música que podría gustarte esta semana...",
-
+    preview:"Descubre música que podría gustarte...",
     date:"22 sept",
-
-    fullDate:
-    "Martes 22 de septiembre de 2026",
-
+    fullDate:"Martes 22 de septiembre de 2026",
     address:"music@spotify.example",
-
     body:
 `Hola Emiliano,
 
 Tenemos nuevas recomendaciones musicales preparadas para ti.
 
 Explora nuevos artistas, álbumes y canciones.`,
-
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:8,
-
     sender:"Apple",
-
     subject:"Tu resumen semanal",
-
-    preview:
-    "Consulta novedades y actividad reciente de tus servicios...",
-
+    preview:"Consulta novedades y actividad reciente...",
     date:"20 sept",
-
-    fullDate:
-    "Domingo 20 de septiembre de 2026",
-
+    fullDate:"Domingo 20 de septiembre de 2026",
     address:"updates@apple.example",
-
     body:
 `Hola Emiliano,
 
 Este es tu resumen semanal.
 
-Puedes revisar la información y las novedades disponibles en tus servicios.`,
-
+Puedes revisar la información y las novedades disponibles.`,
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:9,
-
     sender:"Epic Games",
-
     subject:"Tu código de seguridad",
-
-    preview:
-    "Epic Games: Tu código de seguridad | Hola, Emiliano...",
-
+    preview:"Epic Games: Tu código de seguridad...",
     date:"18 sept",
-
-    fullDate:
-    "Viernes 18 de septiembre de 2026",
-
+    fullDate:"Viernes 18 de septiembre de 2026",
     address:"security@epicgames.example",
-
     body:
 `Hola Emiliano,
 
 Tienes una notificación relacionada con la seguridad de tu cuenta.
 
 Puedes revisar la actividad reciente desde la configuración.`,
-
     unread:false,
     star:false,
     folder:"inbox"
 },
-
 
 {
     id:10,
-
     sender:"Adobe",
-
     subject:"Novedades de Creative Cloud",
-
-    preview:
-    "Conoce las nuevas funciones disponibles...",
-
+    preview:"Conoce las nuevas funciones disponibles...",
     date:"15 sept",
-
-    fullDate:
-    "Martes 15 de septiembre de 2026",
-
+    fullDate:"Martes 15 de septiembre de 2026",
     address:"creative@adobe.example",
-
     body:
 `Hola Emiliano,
 
-Conoce las novedades y herramientas disponibles en Creative Cloud.
-
-Gracias por utilizar nuestros servicios.`,
-
+Conoce las novedades y herramientas disponibles en Creative Cloud.`,
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:11,
-
     sender:"Universidad",
-
     subject:"Información importante para estudiantes",
-
-    preview:
-    "Consulta las novedades y fechas de las próximas actividades...",
-
+    preview:"Consulta novedades y fechas de actividades...",
     date:"12 sept",
-
-    fullDate:
-    "Sábado 12 de septiembre de 2026",
-
+    fullDate:"Sábado 12 de septiembre de 2026",
     address:"estudiantes@universidad.example",
-
     body:
 `Hola Emiliano,
 
 Tenemos nueva información para estudiantes.
 
-Revisa las fechas y actividades disponibles durante este periodo académico.`,
-
+Revisa las fechas y actividades disponibles.`,
     unread:true,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:12,
-
     sender:"Microsoft",
-
     subject:"Novedades de tu cuenta",
-
-    preview:
-    "Revisa las novedades y recomendaciones de Microsoft...",
-
+    preview:"Revisa las novedades y recomendaciones...",
     date:"9 sept",
-
-    fullDate:
-    "Miércoles 9 de septiembre de 2026",
-
+    fullDate:"Miércoles 9 de septiembre de 2026",
     address:"account@microsoft.example",
-
     body:
 `Hola Emiliano,
 
-Tenemos algunas novedades relacionadas con tu cuenta.
-
-Puedes revisar la información disponible desde tu configuración.`,
-
+Tenemos algunas novedades relacionadas con tu cuenta.`,
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:13,
-
     sender:"Amazon",
-
     subject:"Novedades y recomendaciones para ti",
-
-    preview:
-    "Hemos seleccionado algunas recomendaciones...",
-
+    preview:"Hemos seleccionado algunas recomendaciones...",
     date:"5 sept",
-
-    fullDate:
-    "Sábado 5 de septiembre de 2026",
-
+    fullDate:"Sábado 5 de septiembre de 2026",
     address:"updates@amazon.example",
-
     body:
 `Hola Emiliano,
 
 Tenemos nuevas recomendaciones disponibles.
 
-Consulta las novedades y productos que podrían interesarte.`,
-
+Consulta las novedades.`,
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:14,
-
     sender:"LinkedIn",
-
     subject:"Tienes nuevas novedades profesionales",
-
-    preview:
-    "Descubre novedades de tu red profesional...",
-
+    preview:"Descubre novedades de tu red profesional...",
     date:"1 sept",
-
-    fullDate:
-    "Martes 1 de septiembre de 2026",
-
+    fullDate:"Martes 1 de septiembre de 2026",
     address:"news@linkedin.example",
-
     body:
 `Hola Emiliano,
 
 Hay nuevas novedades en tu red profesional.
 
 Revisa las actualizaciones disponibles.`,
-
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:15,
-
     sender:"Netflix",
-
     subject:"Nuevos títulos que podrían gustarte",
-
-    preview:
-    "Tenemos nuevas recomendaciones para esta semana...",
-
+    preview:"Tenemos nuevas recomendaciones...",
     date:"28 ago",
-
-    fullDate:
-    "Viernes 28 de agosto de 2026",
-
+    fullDate:"Viernes 28 de agosto de 2026",
     address:"info@netflix.example",
-
     body:
 `Hola Emiliano,
 
 Tenemos nuevos títulos disponibles.
 
 Descubre películas y series que podrían interesarte.`,
-
     unread:false,
     star:false,
     folder:"inbox"
 },
-
 
 {
     id:16,
-
     sender:"Discord",
-
     subject:"Novedades de tu comunidad",
-
-    preview:
-    "Mira las novedades y actualizaciones recientes...",
-
+    preview:"Mira las novedades y actualizaciones...",
     date:"21 ago",
-
-    fullDate:
-    "Viernes 21 de agosto de 2026",
-
+    fullDate:"Viernes 21 de agosto de 2026",
     address:"updates@discord.example",
-
     body:
 `Hola Emiliano,
 
-Tenemos nuevas actualizaciones relacionadas con tus comunidades.
-
-Revisa las novedades disponibles.`,
-
+Tenemos nuevas actualizaciones relacionadas con tus comunidades.`,
     unread:false,
     star:false,
     folder:"inbox"
 },
 
-
 {
     id:17,
-
     sender:"Steam",
-
     subject:"Novedades de la tienda",
-
-    preview:
-    "Descubre nuevos juegos y ofertas disponibles...",
-
+    preview:"Descubre nuevos juegos y ofertas...",
     date:"14 ago",
-
-    fullDate:
-    "Viernes 14 de agosto de 2026",
-
+    fullDate:"Viernes 14 de agosto de 2026",
     address:"news@steam.example",
-
     body:
 `Hola Emiliano,
 
 Hay novedades disponibles en la tienda.
 
 Consulta los nuevos lanzamientos y contenidos.`,
-
-    unread:false,
-    star:false,
-    folder:"inbox"
-},
-
-
-{
-    id:18,
-
-    sender:"YouTube",
-
-    subject:"Tu resumen de esta semana",
-
-    preview:
-    "Mira lo más destacado de tus canales favoritos...",
-
-    date:"7 ago",
-
-    fullDate:
-    "Viernes 7 de agosto de 2026",
-
-    address:"updates@youtube.example",
-
-    body:
-`Hola Emiliano,
-
-Este es tu resumen semanal de YouTube.
-
-Consulta las novedades de tus canales favoritos.`,
-
     unread:false,
     star:false,
     folder:"inbox"
@@ -1800,6 +1799,7 @@ Consulta las novedades de tus canales favoritos.`,
 
 
 let currentFolder="inbox";
+let currentMail=null;
 
 
 /* =====================================================
@@ -1809,11 +1809,9 @@ let currentFolder="inbox";
 function login(){
 
     document.getElementById("login").style.display="none";
-
     document.getElementById("app").style.display="block";
 
     render();
-
 }
 
 
@@ -1823,29 +1821,27 @@ function login(){
 
 function render(){
 
-    const inbox=
-        document.getElementById("inbox");
+    const inbox=document.getElementById("inbox");
 
     inbox.innerHTML="";
 
-
-    let search=
-        document.getElementById("search")
+    const search=document
+        .getElementById("search")
         .value
         .toLowerCase()
         .trim();
 
-
-    let filtered;
-
+    let filtered=[];
 
     if(currentFolder==="starred"){
 
         filtered=emails.filter(mail=>mail.star);
 
-    }
+    }else if(currentFolder==="all"){
 
-    else{
+        filtered=[...emails];
+
+    }else{
 
         filtered=emails.filter(
             mail=>mail.folder===currentFolder
@@ -1853,35 +1849,15 @@ function render(){
 
     }
 
-
     if(search){
 
         filtered=filtered.filter(mail=>{
 
             return (
-
-                mail.sender
-                    .toLowerCase()
-                    .includes(search)
-
-                ||
-
-                mail.subject
-                    .toLowerCase()
-                    .includes(search)
-
-                ||
-
-                mail.preview
-                    .toLowerCase()
-                    .includes(search)
-
-                ||
-
-                mail.address
-                    .toLowerCase()
-                    .includes(search)
-
+                mail.sender.toLowerCase().includes(search) ||
+                mail.subject.toLowerCase().includes(search) ||
+                mail.preview.toLowerCase().includes(search) ||
+                mail.address.toLowerCase().includes(search)
             );
 
         });
@@ -1889,42 +1865,54 @@ function render(){
     }
 
 
-    document.getElementById("inboxCount")
-        .textContent =
-        emails.filter(
-            mail=>mail.folder==="inbox"
-        ).length;
+    document.getElementById("inboxCount").textContent =
+        emails.filter(mail=>mail.folder==="inbox").length;
 
-
-    document.getElementById("sentCount")
-        .textContent =
-        emails.filter(
-            mail=>mail.folder==="sent"
-        ).length;
+    document.getElementById("sentCount").textContent =
+        emails.filter(mail=>mail.folder==="sent").length;
 
 
     filtered.forEach(mail=>{
 
-        const item=
-            document.createElement("div");
-
+        const item=document.createElement("div");
 
         item.className="email";
 
+        const isSent=mail.folder==="sent";
 
         item.innerHTML=`
 
             <input
                 class="email-check"
                 type="checkbox"
-                onclick="event.stopPropagation()"
-            >
-
+                onclick="event.stopPropagation()">
 
             <div class="email-main">
 
-                <div class="sender">
-                    ${mail.sender}
+                <div class="sender-row">
+
+                    <div class="avatar">
+                        ${isSent ? "EC" : getInitials(mail.sender)}
+                    </div>
+
+                    <div class="sender-info">
+
+                        <div class="sender">
+                            ${mail.sender}
+                        </div>
+
+                        ${
+                            isSent
+                            ?
+                            `<div class="recipient">
+                                Para: ${mail.address}
+                            </div>`
+                            :
+                            ""
+                        }
+
+                    </div>
+
                 </div>
 
                 <div class="subject">
@@ -1937,42 +1925,47 @@ function render(){
 
             </div>
 
-
             <div>
 
                 <div class="date">
                     ${mail.date}
                 </div>
 
-
                 <div
                     class="star ${mail.star ? "active":""}"
                     onclick="
-                        toggleStar(
-                            event,
-                            ${mail.id}
-                        )
+                        toggleStar(event,${mail.id})
                     ">
-
                     ${mail.star ? "★":"☆"}
-
                 </div>
 
             </div>
-
         `;
 
 
         item.onclick=function(){
-
             openMessage(mail.id);
-
         };
-
 
         inbox.appendChild(item);
 
     });
+
+}
+
+
+/* =====================================================
+   INICIALES
+===================================================== */
+
+function getInitials(name){
+
+    return name
+        .split(" ")
+        .slice(0,2)
+        .map(word=>word[0])
+        .join("")
+        .toUpperCase();
 
 }
 
@@ -1983,52 +1976,83 @@ function render(){
 
 function openMessage(id){
 
-    const mail=
-        emails.find(
-            x=>x.id===id
-        );
-
+    const mail=emails.find(x=>x.id===id);
 
     if(!mail)return;
 
+    currentMail=mail;
 
     mail.unread=false;
-
 
     document.getElementById("inbox")
         .style.display="none";
 
-
     document.getElementById("message")
         .style.display="block";
 
-
     document.getElementById("messageTitle")
-        .textContent=
-        mail.subject;
-
+        .textContent=mail.subject;
 
     document.getElementById("messageSender")
-        .textContent=
-        mail.sender;
+        .textContent=mail.sender;
 
+    document.getElementById("messageAvatar")
+        .textContent=
+        mail.folder==="sent"
+        ? "EC"
+        : getInitials(mail.sender);
 
     document.getElementById("messageAddress")
         .textContent=
-        "Para: " +
-        mail.address;
+        mail.folder==="sent"
+        ? "Para: " + mail.address
+        : "De: " + mail.address;
 
 
-    document.getElementById("messageBody")
-        .textContent=
-        mail.body;
+    /* ==========================================
+       CONVERTIR LINKS EN LINKS CLICKEABLES
+    ========================================== */
+
+    const bodyElement=
+        document.getElementById("messageBody");
+
+    bodyElement.innerHTML=
+        linkify(mail.body);
 
 
     document.getElementById("messageDate")
         .textContent=
-        mail.fullDate
-            ? mail.fullDate
-            : mail.date;
+        mail.fullDate || mail.date;
+
+}
+
+
+/* =====================================================
+   LINKS CLICKEABLES
+===================================================== */
+
+function linkify(text){
+
+    const escaped=text
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;");
+
+    return escaped.replace(
+        /(https?:\/\/[^\s]+)/g,
+        function(url){
+
+            return `
+                <a
+                    href="${url}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    ${url}
+                </a>
+            `;
+
+        }
+    );
 
 }
 
@@ -2042,13 +2066,10 @@ function closeMessage(){
     document.getElementById("message")
         .style.display="none";
 
-
     document.getElementById("inbox")
         .style.display="block";
 
-
     render();
-
 }
 
 
@@ -2060,21 +2081,13 @@ function toggleStar(event,id){
 
     event.stopPropagation();
 
-
-    const mail=
-        emails.find(
-            x=>x.id===id
-        );
-
+    const mail=emails.find(x=>x.id===id);
 
     if(!mail)return;
 
-
     mail.star=!mail.star;
 
-
     render();
-
 }
 
 
@@ -2083,9 +2096,7 @@ function toggleStar(event,id){
 ===================================================== */
 
 function searchEmails(){
-
     render();
-
 }
 
 
@@ -2099,7 +2110,6 @@ function openMenu(){
         .style.display="block";
 
 }
-
 
 function closeMenu(){
 
@@ -2119,18 +2129,14 @@ function showFolder(folder){
 
     closeMenu();
 
-
     document.getElementById("message")
         .style.display="none";
-
 
     document.getElementById("inbox")
         .style.display="block";
 
-
     document.getElementById("search")
         .value="";
-
 
     render();
 
@@ -2146,12 +2152,7 @@ function openCompose(){
     document.getElementById("compose")
         .style.display="block";
 
-
-    document.getElementById("to")
-        .value="";
-
 }
-
 
 function closeCompose(){
 
@@ -2167,79 +2168,58 @@ function closeCompose(){
 
 function sendEmail(){
 
-    const to=
-        document.getElementById("to")
+    const to=document
+        .getElementById("to")
         .value
         .trim();
 
-
-    const subject=
-        document.getElementById("subject")
+    const subject=document
+        .getElementById("subject")
         .value
         .trim();
 
-
-    const body=
-        document.getElementById("body")
+    const body=document
+        .getElementById("body")
         .value
         .trim();
 
 
     if(!to || !subject || !body){
 
-        alert(
-            "Completa todos los campos."
-        );
+        alert("Completa todos los campos.");
 
         return;
-
     }
 
 
-    const now=
-        new Date();
-
+    const now=new Date();
 
     const dateText=
-        now.toLocaleDateString(
-            "es-ES",
-            {
-                day:"numeric",
-                month:"short"
-            }
-        )
+        now.toLocaleDateString("es-ES",{
+            day:"numeric",
+            month:"short"
+        })
+        + ", "
         +
-        ", "
-        +
-        now.toLocaleTimeString(
-            "es-ES",
-            {
-                hour:"2-digit",
-                minute:"2-digit"
-            }
-        );
+        now.toLocaleTimeString("es-ES",{
+            hour:"2-digit",
+            minute:"2-digit"
+        });
 
 
     const fullDate=
-        now.toLocaleDateString(
-            "es-ES",
-            {
-                weekday:"long",
-                day:"numeric",
-                month:"long",
-                year:"numeric"
-            }
-        )
+        now.toLocaleDateString("es-ES",{
+            weekday:"long",
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+        })
+        + ", "
         +
-        ", "
-        +
-        now.toLocaleTimeString(
-            "es-ES",
-            {
-                hour:"2-digit",
-                minute:"2-digit"
-            }
-        );
+        now.toLocaleTimeString("es-ES",{
+            hour:"2-digit",
+            minute:"2-digit"
+        });
 
 
     emails.unshift({
@@ -2250,8 +2230,7 @@ function sendEmail(){
 
         subject:subject,
 
-        preview:
-            body.substring(0,90),
+        preview:body.substring(0,90),
 
         date:dateText,
 
@@ -2270,21 +2249,66 @@ function sendEmail(){
     });
 
 
-    document.getElementById("subject")
-        .value="";
+    document.getElementById("to").value="";
+    document.getElementById("subject").value="";
+    document.getElementById("body").value="";
 
+    closeCompose();
+
+    currentFolder="sent";
+
+    render();
+
+}
+
+
+/* =====================================================
+   RESPONDER
+===================================================== */
+
+function replyEmail(){
+
+    if(!currentMail)return;
+
+    document.getElementById("compose")
+        .style.display="block";
+
+    document.getElementById("to")
+        .value=currentMail.address;
+
+    document.getElementById("subject")
+        .value="Re: " + currentMail.subject;
 
     document.getElementById("body")
         .value="";
 
-
-    closeCompose();
-
-
-    currentFolder="sent";
+}
 
 
-    render();
+/* =====================================================
+   REENVIAR
+===================================================== */
+
+function forwardEmail(){
+
+    if(!currentMail)return;
+
+    document.getElementById("compose")
+        .style.display="block";
+
+    document.getElementById("to")
+        .value="";
+
+    document.getElementById("subject")
+        .value="Fwd: " + currentMail.subject;
+
+    document.getElementById("body")
+        .value=
+        "\n\n---------- Mensaje reenviado ----------\n" +
+        "De: " + currentMail.sender + "\n" +
+        "Para: " + currentMail.address + "\n" +
+        "Asunto: " + currentMail.subject + "\n\n" +
+        currentMail.body;
 
 }
 
