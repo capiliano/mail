@@ -414,83 +414,96 @@ body{
 }
 
 /* =========================
-   TARJETA PDF
+   PDF / ARCHIVO ADJUNTO
 ========================= */
 
-.attachment-card{
-    width:100%;
-    max-width:520px;
-    min-height:92px;
+.attachment{
+    width:330px;
+    max-width:100%;
     margin-top:25px;
     border:1px solid #dadce0;
     border-radius:10px;
+    overflow:hidden;
     background:#fff;
-    display:flex;
-    align-items:center;
-    padding:14px 16px;
-    text-decoration:none;
-    color:#202124;
-    transition:.2s;
-    box-shadow:0 1px 2px rgba(0,0,0,.05);
+    box-shadow:0 1px 3px rgba(60,64,67,.15);
 }
 
-.attachment-card:hover{
+.attachment-preview{
+    height:145px;
     background:#f8f9fa;
-    border-color:#c7c7c7;
-    box-shadow:0 2px 6px rgba(0,0,0,.10);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-bottom:1px solid #e0e0e0;
+    position:relative;
 }
 
 .pdf-icon{
-    width:54px;
-    height:62px;
+    width:60px;
+    height:70px;
+    background:#ea4335;
+    color:#fff;
     border-radius:5px;
-    background:#d93025;
-    color:white;
     display:flex;
     align-items:center;
     justify-content:center;
     font-size:17px;
     font-weight:700;
     position:relative;
-    margin-right:15px;
-    flex-shrink:0;
 }
 
 .pdf-icon::after{
     content:"";
     position:absolute;
-    right:0;
     top:0;
-    width:16px;
-    height:16px;
-    background:#fff;
-    clip-path:polygon(0 0,100% 100%,0 100%);
-    opacity:.9;
+    right:0;
+    border-style:solid;
+    border-width:0 17px 17px 0;
+    border-color:transparent #fff transparent transparent;
 }
 
 .attachment-info{
-    min-width:0;
-    flex:1;
+    padding:13px 15px;
 }
 
 .attachment-name{
-    font-size:15px;
+    font-size:14px;
     font-weight:500;
+    color:#202124;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
 }
 
 .attachment-type{
-    color:#777;
     font-size:12px;
-    margin-top:5px;
+    color:#777;
+    margin-top:4px;
 }
 
-.attachment-action{
-    color:#5f6368;
-    font-size:23px;
-    margin-left:12px;
+.attachment-actions{
+    display:flex;
+    gap:8px;
+    padding:0 15px 14px;
+}
+
+.pdf-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:35px;
+    padding:0 15px;
+    border:1px solid #dadce0;
+    border-radius:18px;
+    background:white;
+    color:#1769d2;
+    text-decoration:none;
+    font-size:13px;
+    cursor:pointer;
+}
+
+.pdf-button:hover{
+    background:#f1f3f4;
 }
 
 /* =========================
@@ -771,8 +784,8 @@ body{
         padding:11px 10px;
     }
 
-    .attachment-card{
-        max-width:100%;
+    .attachment{
+        width:100%;
     }
 }
 </style>
@@ -924,15 +937,17 @@ body{
             </div>
 
             <!-- PDF -->
-            <a
-                id="attachmentCard"
-                class="attachment-card"
-                href="dictado.pdf"
-                target="_blank"
-                rel="noopener noreferrer">
+            <div
+                class="attachment"
+                id="pdfAttachment"
+                style="display:none;">
 
-                <div class="pdf-icon">
-                    PDF
+                <div class="attachment-preview">
+
+                    <div class="pdf-icon">
+                        PDF
+                    </div>
+
                 </div>
 
                 <div class="attachment-info">
@@ -947,11 +962,25 @@ body{
 
                 </div>
 
-                <div class="attachment-action">
-                    ↗
+                <div class="attachment-actions">
+
+                    <a
+                        class="pdf-button"
+                        href="dictado.pdf"
+                        target="_blank">
+                        Abrir
+                    </a>
+
+                    <a
+                        class="pdf-button"
+                        href="dictado.pdf"
+                        download="dictado.pdf">
+                        Descargar
+                    </a>
+
                 </div>
 
-            </a>
+            </div>
 
             <div
                 class="message-date"
@@ -1286,15 +1315,15 @@ let emails = [
     preview:
     "Buenas tardes, profesora Gioconda. Soy Emiliano Chuva...",
 
-    date:"30 sept, 11:00",
+    date:"27 sept, 18:48",
 
     fullDate:
-    "Miércoles 30 de septiembre de 2026, 11:00",
+    "Domingo 27 de septiembre de 2026, 18:48",
 
     address:"gbeltran@ups.edu.ec",
 
     body:
-`Buenos tardes, profesora Gioconda.
+`Buenas tardes, profesora Gioconda.
 
 Soy Emiliano Chuva, estudiante de la carrera de Diseño Multimedia.
 
@@ -1305,14 +1334,12 @@ Le envío los deberes para el día de hoy:
 
 https://canva.link/1r6blo6c65cv6zd`,
 
-    attachment:{
-        name:"dictado.pdf",
-        type:"Documento PDF",
-        url:"dictado.pdf"
-    },
+    attachment:"dictado.pdf",
 
     unread:false,
+
     star:true,
+
     folder:"sent"
 },
 
@@ -1325,17 +1352,10 @@ https://canva.link/1r6blo6c65cv6zd`,
     id:99,
     sender:"Emiliano Chuva",
     subject:"Consulta sobre actividad académica",
-
-    preview:
-    "Buenas tardes, quisiera consultar sobre la actividad...",
-
+    preview:"Buenas tardes, quisiera consultar sobre la actividad...",
     date:"25 sept, 16:22",
-
-    fullDate:
-    "Viernes 25 de septiembre de 2026, 16:22",
-
+    fullDate:"Viernes 25 de septiembre de 2026, 16:22",
     address:"profesores@universidad.edu.ec",
-
     body:
 `Buenas tardes.
 
@@ -1345,7 +1365,6 @@ Muchas gracias.
 
 Saludos,
 Emiliano Chuva`,
-
     unread:false,
     star:false,
     folder:"sent"
@@ -1355,17 +1374,10 @@ Emiliano Chuva`,
     id:98,
     sender:"Emiliano Chuva",
     subject:"Entrega de trabajo",
-
-    preview:
-    "Buenas tardes, adjunto el trabajo solicitado...",
-
+    preview:"Buenas tardes, adjunto el trabajo solicitado...",
     date:"22 sept, 19:10",
-
-    fullDate:
-    "Martes 22 de septiembre de 2026, 19:10",
-
+    fullDate:"Martes 22 de septiembre de 2026, 19:10",
     address:"docencia@universidad.edu.ec",
-
     body:
 `Buenas tardes.
 
@@ -1373,7 +1385,6 @@ Adjunto el trabajo solicitado para su revisión.
 
 Saludos cordiales,
 Emiliano Chuva`,
-
     unread:false,
     star:false,
     folder:"sent"
@@ -1383,24 +1394,16 @@ Emiliano Chuva`,
     id:97,
     sender:"Emiliano Chuva",
     subject:"Consulta sobre calificación",
-
-    preview:
-    "Buenas tardes, quisiera consultar sobre la calificación...",
-
+    preview:"Buenas tardes, quisiera consultar sobre la calificación...",
     date:"18 sept, 14:35",
-
-    fullDate:
-    "Viernes 18 de septiembre de 2026, 14:35",
-
+    fullDate:"Viernes 18 de septiembre de 2026, 14:35",
     address:"docente@universidad.edu.ec",
-
     body:
 `Buenas tardes.
 
 Quisiera consultar sobre la calificación correspondiente a una actividad entregada anteriormente.
 
 Gracias por su atención.`,
-
     unread:false,
     star:false,
     folder:"sent"
@@ -1410,17 +1413,10 @@ Gracias por su atención.`,
     id:96,
     sender:"Emiliano Chuva",
     subject:"Material para revisión",
-
-    preview:
-    "Le envío el material correspondiente a la actividad...",
-
+    preview:"Le envío el material correspondiente a la actividad...",
     date:"14 sept, 20:04",
-
-    fullDate:
-    "Lunes 14 de septiembre de 2026, 20:04",
-
+    fullDate:"Lunes 14 de septiembre de 2026, 20:04",
     address:"profesora@universidad.edu.ec",
-
     body:
 `Buenas tardes.
 
@@ -1428,7 +1424,6 @@ Le envío el material correspondiente a la actividad para su revisión.
 
 Saludos,
 Emiliano Chuva`,
-
     unread:false,
     star:false,
     folder:"sent"
@@ -1438,17 +1433,10 @@ Emiliano Chuva`,
     id:95,
     sender:"Emiliano Chuva",
     subject:"Entrega de actividad",
-
-    preview:
-    "Adjunto la actividad correspondiente a esta semana...",
-
+    preview:"Adjunto la actividad correspondiente a esta semana...",
     date:"10 sept, 17:42",
-
-    fullDate:
-    "Jueves 10 de septiembre de 2026, 17:42",
-
+    fullDate:"Jueves 10 de septiembre de 2026, 17:42",
     address:"docente@universidad.edu.ec",
-
     body:
 `Buenas tardes.
 
@@ -1456,7 +1444,6 @@ Adjunto la actividad correspondiente a esta semana para su revisión.
 
 Saludos cordiales,
 Emiliano Chuva`,
-
     unread:false,
     star:false,
     folder:"sent"
@@ -1466,24 +1453,16 @@ Emiliano Chuva`,
     id:94,
     sender:"Emiliano Chuva",
     subject:"Consulta sobre instrucciones",
-
-    preview:
-    "Quisiera consultar una duda sobre las instrucciones...",
-
+    preview:"Quisiera consultar una duda sobre las instrucciones...",
     date:"5 sept, 11:26",
-
-    fullDate:
-    "Sábado 5 de septiembre de 2026, 11:26",
-
+    fullDate:"Sábado 5 de septiembre de 2026, 11:26",
     address:"profesores@universidad.edu.ec",
-
     body:
 `Buenos días.
 
 Quisiera consultar una duda relacionada con las instrucciones de la actividad.
 
 Muchas gracias.`,
-
     unread:false,
     star:false,
     folder:"sent"
@@ -1493,17 +1472,10 @@ Muchas gracias.`,
     id:93,
     sender:"Emiliano Chuva",
     subject:"Envío de material",
-
-    preview:
-    "Le envío el material solicitado para la actividad...",
-
+    preview:"Le envío el material solicitado para la actividad...",
     date:"30 ago, 21:05",
-
-    fullDate:
-    "Domingo 30 de agosto de 2026, 21:05",
-
+    fullDate:"Domingo 30 de agosto de 2026, 21:05",
     address:"docencia@universidad.edu.ec",
-
     body:
 `Buenas noches.
 
@@ -1511,7 +1483,6 @@ Le envío el material solicitado para la actividad.
 
 Saludos,
 Emiliano Chuva`,
-
     unread:false,
     star:false,
     folder:"sent"
@@ -1521,17 +1492,10 @@ Emiliano Chuva`,
     id:92,
     sender:"Emiliano Chuva",
     subject:"Trabajo para revisión",
-
-    preview:
-    "Adjunto el trabajo para su revisión y comentarios...",
-
+    preview:"Adjunto el trabajo para su revisión y comentarios...",
     date:"24 ago, 18:37",
-
-    fullDate:
-    "Lunes 24 de agosto de 2026, 18:37",
-
+    fullDate:"Lunes 24 de agosto de 2026, 18:37",
     address:"profesora@universidad.edu.ec",
-
     body:
 `Buenas tardes.
 
@@ -1539,7 +1503,6 @@ Adjunto el trabajo para su revisión.
 
 Saludos cordiales,
 Emiliano Chuva`,
-
     unread:false,
     star:false,
     folder:"sent"
@@ -1549,24 +1512,16 @@ Emiliano Chuva`,
     id:91,
     sender:"Emiliano Chuva",
     subject:"Consulta académica",
-
-    preview:
-    "Buenas tardes, tengo una consulta relacionada con la materia...",
-
+    preview:"Buenas tardes, tengo una consulta relacionada con la materia...",
     date:"18 ago, 15:16",
-
-    fullDate:
-    "Martes 18 de agosto de 2026, 15:16",
-
+    fullDate:"Martes 18 de agosto de 2026, 15:16",
     address:"docente@universidad.edu.ec",
-
     body:
 `Buenas tardes.
 
 Tengo una consulta relacionada con la materia y una de las actividades.
 
 Quedo atento a su respuesta.`,
-
     unread:false,
     star:false,
     folder:"sent"
@@ -1576,28 +1531,21 @@ Quedo atento a su respuesta.`,
     id:90,
     sender:"Emiliano Chuva",
     subject:"Entrega de proyecto",
-
-    preview:
-    "Le envío el proyecto correspondiente a la materia...",
-
+    preview:"Le envío el proyecto correspondiente a la materia...",
     date:"11 ago, 20:18",
-
-    fullDate:
-    "Martes 11 de agosto de 2026, 20:18",
-
+    fullDate:"Martes 11 de agosto de 2026, 20:18",
     address:"profesores@universidad.edu.ec",
-
     body:
 `Buenas noches.
 
 Le envío el proyecto correspondiente a la materia.
 
 Gracias por su tiempo.`,
-
     unread:false,
     star:false,
     folder:"sent"
 },
+
 
 /* =====================================================
    RECIBIDOS
@@ -1960,6 +1908,7 @@ function render(){
 
     let filtered=[];
 
+
     if(currentFolder==="starred"){
 
         filtered=emails.filter(mail=>mail.star);
@@ -1975,6 +1924,7 @@ function render(){
         );
 
     }
+
 
     if(search){
 
@@ -2111,23 +2061,28 @@ function openMessage(id){
 
     mail.unread=false;
 
+
     document.getElementById("inbox")
         .style.display="none";
 
     document.getElementById("message")
         .style.display="block";
 
+
     document.getElementById("messageTitle")
         .textContent=mail.subject;
 
+
     document.getElementById("messageSender")
         .textContent=mail.sender;
+
 
     document.getElementById("messageAvatar")
         .textContent=
         mail.folder==="sent"
         ? "EC"
         : getInitials(mail.sender);
+
 
     document.getElementById("messageAddress")
         .textContent=
@@ -2136,39 +2091,29 @@ function openMessage(id){
         : "De: " + mail.address;
 
 
-    /* ==========================================
-       TEXTO Y LINK
-    ========================================== */
-
     const bodyElement=
         document.getElementById("messageBody");
+
 
     bodyElement.innerHTML=
         linkify(mail.body);
 
 
     /* ==========================================
-       PDF
+       MOSTRAR PDF SOLO EN EL CORREO DE ENTREGA
     ========================================== */
 
-    const attachment=
-        document.getElementById("attachmentCard");
+    const pdfAttachment=
+        document.getElementById("pdfAttachment");
 
-    if(mail.attachment){
 
-        attachment.style.display="flex";
+    if(mail.attachment === "dictado.pdf"){
 
-        attachment.href=mail.attachment.url;
-
-        attachment.querySelector(".attachment-name")
-            .textContent=mail.attachment.name;
-
-        attachment.querySelector(".attachment-type")
-            .textContent=mail.attachment.type;
+        pdfAttachment.style.display="block";
 
     }else{
 
-        attachment.style.display="none";
+        pdfAttachment.style.display="none";
 
     }
 
@@ -2190,6 +2135,7 @@ function linkify(text){
         .replace(/&/g,"&amp;")
         .replace(/</g,"&lt;")
         .replace(/>/g,"&gt;");
+
 
     return escaped.replace(
         /(https?:\/\/[^\s]+)/g,
@@ -2249,7 +2195,9 @@ function toggleStar(event,id){
 ===================================================== */
 
 function searchEmails(){
+
     render();
+
 }
 
 
@@ -2263,6 +2211,7 @@ function openMenu(){
         .style.display="block";
 
 }
+
 
 function closeMenu(){
 
@@ -2307,6 +2256,7 @@ function openCompose(){
 
 }
 
+
 function closeCompose(){
 
     document.getElementById("compose")
@@ -2346,6 +2296,7 @@ function sendEmail(){
 
 
     const now=new Date();
+
 
     const dateText=
         now.toLocaleDateString("es-ES",{
@@ -2406,7 +2357,9 @@ function sendEmail(){
     document.getElementById("subject").value="";
     document.getElementById("body").value="";
 
+
     closeCompose();
+
 
     currentFolder="sent";
 
@@ -2423,14 +2376,18 @@ function replyEmail(){
 
     if(!currentMail)return;
 
+
     document.getElementById("compose")
         .style.display="block";
+
 
     document.getElementById("to")
         .value=currentMail.address;
 
+
     document.getElementById("subject")
         .value="Re: " + currentMail.subject;
+
 
     document.getElementById("body")
         .value="";
@@ -2446,14 +2403,18 @@ function forwardEmail(){
 
     if(!currentMail)return;
 
+
     document.getElementById("compose")
         .style.display="block";
+
 
     document.getElementById("to")
         .value="";
 
+
     document.getElementById("subject")
         .value="Fwd: " + currentMail.subject;
+
 
     document.getElementById("body")
         .value=
