@@ -414,6 +414,86 @@ body{
 }
 
 /* =========================
+   TARJETA PDF
+========================= */
+
+.attachment-card{
+    width:100%;
+    max-width:520px;
+    min-height:92px;
+    margin-top:25px;
+    border:1px solid #dadce0;
+    border-radius:10px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    padding:14px 16px;
+    text-decoration:none;
+    color:#202124;
+    transition:.2s;
+    box-shadow:0 1px 2px rgba(0,0,0,.05);
+}
+
+.attachment-card:hover{
+    background:#f8f9fa;
+    border-color:#c7c7c7;
+    box-shadow:0 2px 6px rgba(0,0,0,.10);
+}
+
+.pdf-icon{
+    width:54px;
+    height:62px;
+    border-radius:5px;
+    background:#d93025;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+    font-weight:700;
+    position:relative;
+    margin-right:15px;
+    flex-shrink:0;
+}
+
+.pdf-icon::after{
+    content:"";
+    position:absolute;
+    right:0;
+    top:0;
+    width:16px;
+    height:16px;
+    background:#fff;
+    clip-path:polygon(0 0,100% 100%,0 100%);
+    opacity:.9;
+}
+
+.attachment-info{
+    min-width:0;
+    flex:1;
+}
+
+.attachment-name{
+    font-size:15px;
+    font-weight:500;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.attachment-type{
+    color:#777;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.attachment-action{
+    color:#5f6368;
+    font-size:23px;
+    margin-left:12px;
+}
+
+/* =========================
    RESPONDER / REENVIAR
 ========================= */
 
@@ -690,6 +770,10 @@ body{
         min-width:0;
         padding:11px 10px;
     }
+
+    .attachment-card{
+        max-width:100%;
+    }
 }
 </style>
 </head>
@@ -838,6 +922,36 @@ body{
                 class="message-body"
                 id="messageBody">
             </div>
+
+            <!-- PDF -->
+            <a
+                id="attachmentCard"
+                class="attachment-card"
+                href="dictado.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <div class="pdf-icon">
+                    PDF
+                </div>
+
+                <div class="attachment-info">
+
+                    <div class="attachment-name">
+                        dictado.pdf
+                    </div>
+
+                    <div class="attachment-type">
+                        Documento PDF
+                    </div>
+
+                </div>
+
+                <div class="attachment-action">
+                    ↗
+                </div>
+
+            </a>
 
             <div
                 class="message-date"
@@ -1159,30 +1273,43 @@ body{
 let emails = [
 
 /* =====================================================
-   ENVIADO MÁS RECIENTE
+   ENTREGA DE DEBERES
 ===================================================== */
 
 {
     id:100,
+
     sender:"Emiliano Chuva",
+
     subject:"Entrega de Deberes: Dictado y Video",
 
     preview:
     "Buenas tardes, profesora Gioconda. Soy Emiliano Chuva...",
 
-    date:"27 sept, 18:48",
+    date:"30 sept, 11:00",
 
     fullDate:
-    "Domingo 27 de septiembre de 2026, 18:48",
+    "Miércoles 30 de septiembre de 2026, 11:00",
 
     address:"gbeltran@ups.edu.ec",
 
     body:
-`Buenas tardes, profesora Gioconda.
+`Buenos tardes, profesora Gioconda.
 
-Soy Emiliano Chuva, estudiante de la carrera de diseño multimedia. le envió la tarea del dictado y video sobre la evolución de los videojuegos desde los 80 hasta la actualidad.
+Soy Emiliano Chuva, estudiante de la carrera de Diseño Multimedia.
 
-https://canva.link/7xrzj49wlcy09z0`,
+Le envío los deberes para el día de hoy:
+
+- Dictado
+- Video
+
+https://canva.link/1r6blo6c65cv6zd`,
+
+    attachment:{
+        name:"dictado.pdf",
+        type:"Documento PDF",
+        url:"dictado.pdf"
+    },
 
     unread:false,
     star:true,
@@ -2010,7 +2137,7 @@ function openMessage(id){
 
 
     /* ==========================================
-       CONVERTIR LINKS EN LINKS CLICKEABLES
+       TEXTO Y LINK
     ========================================== */
 
     const bodyElement=
@@ -2018,6 +2145,32 @@ function openMessage(id){
 
     bodyElement.innerHTML=
         linkify(mail.body);
+
+
+    /* ==========================================
+       PDF
+    ========================================== */
+
+    const attachment=
+        document.getElementById("attachmentCard");
+
+    if(mail.attachment){
+
+        attachment.style.display="flex";
+
+        attachment.href=mail.attachment.url;
+
+        attachment.querySelector(".attachment-name")
+            .textContent=mail.attachment.name;
+
+        attachment.querySelector(".attachment-type")
+            .textContent=mail.attachment.type;
+
+    }else{
+
+        attachment.style.display="none";
+
+    }
 
 
     document.getElementById("messageDate")
